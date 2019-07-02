@@ -2477,7 +2477,8 @@ class TestModule < Test::Unit::TestCase
       assert_include(methods, :#{method}, ":#{method} should be private")
 
       assert_raise_with_message(NoMethodError, "private method `#{method}' called for main:Object") {
-        self.#{method}
+        recv = self
+        recv.#{method}
       }
     }
   end
