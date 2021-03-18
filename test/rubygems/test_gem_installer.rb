@@ -1422,11 +1422,6 @@ gem 'other', version
     write_file File.join(@tempdir, "extconf.rb") do |io|
       io.write <<-RUBY
         require "mkmf"
-
-        CONFIG['CC'] = '$(TOUCH) $@ ||'
-        CONFIG['LDSHARED'] = '$(TOUCH) $@ ||'
-        $ruby = '#{Gem.ruby}'
-
         create_makefile("#{@spec.name}")
       RUBY
     end
@@ -1435,7 +1430,6 @@ gem 'other', version
 
     write_file File.join(@tempdir, "a.c") do |io|
       io.write <<-C
-        #include <ruby.h>
         void Init_a() { }
       C
     end
@@ -1512,11 +1506,6 @@ gem 'other', version
     write_file File.join(@tempdir, "extconf.rb") do |io|
       io.write <<-RUBY
         require "mkmf"
-
-        CONFIG['CC'] = '$(TOUCH) $@ ||'
-        CONFIG['LDSHARED'] = '$(TOUCH) $@ ||'
-        $ruby = '#{Gem.ruby}'
-
         create_makefile("#{@spec.name}")
       RUBY
     end
