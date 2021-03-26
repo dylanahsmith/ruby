@@ -1422,6 +1422,7 @@ gem 'other', version
     write_file File.join(@tempdir, "extconf.rb") do |io|
       io.write <<-RUBY
         require "mkmf"
+        $LDFLAGS << " -L#{@current_dir}" # to link with libruby without needing it installed
         create_makefile("#{@spec.name}")
       RUBY
     end
@@ -1507,6 +1508,7 @@ gem 'other', version
     write_file File.join(@tempdir, "extconf.rb") do |io|
       io.write <<-RUBY
         require "mkmf"
+        $LDFLAGS << " -L#{@current_dir}" # to link with libruby without needing it installed
         create_makefile("#{@spec.name}")
       RUBY
     end
